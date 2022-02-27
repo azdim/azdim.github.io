@@ -9,3 +9,8 @@ repos:
     hooks:
     -   id: markdownlint
         args: ['-c','.ci/.mdlrc']
+-   repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.13.0
+    hooks:
+        - id: check-github-workflows
+        - id: check-github-actions
