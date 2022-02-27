@@ -27,7 +27,11 @@ jobs:
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.TOKEN }}
+          external_repository: azdim/azdim.github.io
           publish_dir: ./public
+          #   keep_files: true
+          user_name: azdim
+          user_email: kcgj829@astrazeneca.net
+          publish_branch: main
