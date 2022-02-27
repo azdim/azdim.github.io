@@ -18,5 +18,15 @@ Education I have completed a Masters in Physics at University College London whe
 Work I am curently a consultant cloud engineer with Kubrick group and I am currently placed at Astrazeneca supporting their production of a novel HPC platform.</description>
     </item>
     
+    <item>
+      <title>Terraform 101</title>
+      <link>https://azdim.github.io/blog/terraform/</link>
+      <pubDate>Sun, 27 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://azdim.github.io/blog/terraform/</guid>
+      <description>What is terraform? Terraform is a widely used Infrastructure as Code (IaC) tool. This is a tool that is cloud agnostic, therefore can interact with a wide range of supported cloud providers.
+Why use terraform? As an engineer you may find yourself having to provision several resources on a cloud platform. If you were to create it manually through the CLI or a webportal you would find that creating copies of the same resource can be time consuming.</description>
+    </item>
+    
   </channel>
 </rss>

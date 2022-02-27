@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>
+      
+          Terraform 101 - Dim
+      
+  </title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="" />
+  <link rel="shortcut icon" type="image/x-icon" href="https://azdim.github.io/img/avatar2.png">
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://azdim.github.io/style.min.d00c0d9d913b77148cb0c2c4edfb7e7e293a43092ab7bf612be370af06a69eb7.css" integrity="sha256-0AwNnZE7dxSMsMLE7ft&#43;fik6Qwkqt79hK&#43;Nwrwamnrc=">
+  
+  
+  
+  <link rel="stylesheet" href="https://azdim.github.io/style-dark.min.4a68265a5f9edd67b994583bffe0ae23bb89a44f600bc565a1837468726e75e3.css" media="(prefers-color-scheme: dark)" integrity="sha256-SmgmWl&#43;e3We5lFg7/&#43;CuI7uJpE9gC8VloYN0aHJudeM=">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+  
+  
+
+  <meta property="og:title" content="Terraform 101" />
+<meta property="og:description" content="What is terraform? Terraform is a widely used Infrastructure as Code (IaC) tool. This is a tool that is cloud agnostic, therefore can interact with a wide range of supported cloud providers.
+Why use terraform? As an engineer you may find yourself having to provision several resources on a cloud platform. If you were to create it manually through the CLI or a webportal you would find that creating copies of the same resource can be time consuming." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://azdim.github.io/blog/terraform/" /><meta property="og:image" content="https://azdim.github.io/avatar2.jpg" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2022-02-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-27T00:00:00+00:00" />
+
+<meta itemprop="name" content="Terraform 101">
+<meta itemprop="description" content="What is terraform? Terraform is a widely used Infrastructure as Code (IaC) tool. This is a tool that is cloud agnostic, therefore can interact with a wide range of supported cloud providers.
+Why use terraform? As an engineer you may find yourself having to provision several resources on a cloud platform. If you were to create it manually through the CLI or a webportal you would find that creating copies of the same resource can be time consuming."><meta itemprop="datePublished" content="2022-02-27T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-02-27T00:00:00+00:00" />
+<meta itemprop="wordCount" content="295"><meta itemprop="image" content="https://azdim.github.io/avatar2.jpg">
+<meta itemprop="keywords" content="about," /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://azdim.github.io/avatar2.jpg"/>
+
+<meta name="twitter:title" content="Terraform 101"/>
+<meta name="twitter:description" content="What is terraform? Terraform is a widely used Infrastructure as Code (IaC) tool. This is a tool that is cloud agnostic, therefore can interact with a wide range of supported cloud providers.
+Why use terraform? As an engineer you may find yourself having to provision several resources on a cloud platform. If you were to create it manually through the CLI or a webportal you would find that creating copies of the same resource can be time consuming."/>
+
+  <!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <![endif]-->
+
+  
+  
+</head>
+
+  <body>
+    
+  <h1>Terraform 101</h1>
+  <header>
+  
+  <div class="avatar">
+    <img class="avatarMask" src="https://azdim.github.io/img/avatar2.png" alt="">
+    <a href="https://azdim.github.io"><img class="avatar-border" src="https://azdim.github.io/img/avatar-border.svg" alt=""></a>
+  </div>
+  
+  <h2><a class="author" href="https://azdim.github.io"></a></h2>
+</header>
+
+  
+  
+  
+  <p class="date">February 27, 2022</p>
+  
+  
+  
+  <div id="tags">
+    <ul>
+      
+        
+        
+          <li><a href="https://azdim.github.io/tags/about/">about</a></li>
+        
+      
+    </ul>
+  </div>
+  
+  
+  <div id="contentBody">
+    <h2 id="what-is-terraform">What is terraform?</h2>
+<p>Terraform is a widely used Infrastructure as Code (IaC) tool. This is a tool that is cloud agnostic, therefore can interact with a wide range of supported cloud providers.</p>
+<h2 id="why-use-terraform">Why use terraform?</h2>
+<p>As an engineer you may find yourself having to provision several resources on a cloud platform. If you were to create it manually through the CLI or a webportal you would find that creating copies of the same resource can be time consuming. Furthermore removing these resources can prove to be tedious as one resource may also have other attached resources that also need to be removed. As an example if you were to provision a virtual machine on any cloud provider you would need to have a boot volume attached to it which is created at the time the virtual machine is created. If you were to delete the virtual machine it is possible that the volume is still lingering around which might also affect your overall cost. Terraform overcomes this problem by using something called a state file <code>terraform.tfstate</code>. This file contains all the information of the resources that were provisioned and therefore if you were to delete your resources terraform would make sure to delete all that was created.</p>
+<h2 id="where-do-i-start-with-terraform-">Where do I start with terraform ?</h2>
+<p>Let&rsquo;s begin with a very simple yet effective project that will cover many aspects of terraform and should give you the foundation you need.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li><input disabled="" type="checkbox"> I have an IDE installed. An IDE such as VSCode of PyCharm is recommended.</li>
+<li><input disabled="" type="checkbox"> I have terraform installed. Terraform can be installed through brew (Mac), Chocolatey (Windows) and apt for Linux <a href="https://www.terraform.io/downloads">Instructions</a></li>
+<li><input disabled="" type="checkbox"> I have a GitHub account.</li>
+<li><input disabled="" type="checkbox"> I have a GitHub token saved. This token should have repo level access. <a href="https://docs.github.com/en/enterprise-server@3.3/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">How to create a PAT token.</a></li>
+</ul>
+
+  </div>
+  <footer>
+  <p>
+  &copy; 2022 .
+  Powered by <a href="https://gohugo.io/">Hugo</a>
+  using the <a href="https://github.com/koirand/pulp/">pulp</a> theme.
+  </p>
+</footer>
+
+
+  </body>
+</html>
