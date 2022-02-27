@@ -1,4 +1,4 @@
-baseURL = ''
+baseURL = 'https://azdim.github.io'
 languageCode = 'en-us'
 title = 'Dim'
 theme = "pulp"
