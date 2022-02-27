@@ -25,7 +25,9 @@
   box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
 }
 
-#contentBody code,
+#contentBody code {
+  color: #ffffff;
+}
 #contentBody kbd,
 #contentBody pre {
   font-family: monospace, monospace;

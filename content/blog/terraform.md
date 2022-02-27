@@ -1,9 +1,16 @@
 ---
 title: "Terraform 101"
+<<<<<<< HEAD
 description: ""
 date: 2022-02-27
 images: ["avatar2.jpg"]
 tags: ["about"]
+=======
+description: "An introduction to terraform"
+date: 2022-02-27
+images: ["avatar2.jpg"]
+tags: ["terraform"]
+>>>>>>> content
 ---
 
 ## What is terraform?
