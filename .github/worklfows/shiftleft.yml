@@ -1,0 +1,17 @@
+---
+name: Run shift-left testing
+
+on:
+
+  push:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v2
+      - name: Run tests
+        working-directory: .ci
+        run : |
+          pip install pre-commit
+          pre-commit run --all-files

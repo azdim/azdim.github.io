@@ -1,0 +1,38 @@
+baseURL = ''
+languageCode = 'en-us'
+title = 'Dim'
+theme = "pulp"
+canonifyurls = true
+hasCJKLanguage = true
+
+[params]
+    author = ""
+    avatar = "avatar2.png"
+    # avatarDescription = "My avatar description"
+    favicon = "avatar2.png"
+    description = """
+        Hi! Welcome to my landing page. Here you'll find links to my Github repo and a blog
+        page which will contain some useful content for someone starting in the cloud space.
+    """
+    publicationYear = "2022"
+
+[[menu.main]]
+    identifier = "blog"
+    name = "Content" #If display text link, cancel comment out
+    pre = "<i class='fa fa-book-open fa-lg'></i>" #Choose your favorite font from Font Awesome
+    url = "/blog/"
+    weight = 10
+
+[[menu.main]]
+    identifier = "github"
+    name = "GitHub"
+    pre = "<i class='fab fa-github fa-lg'></i>"
+    url = "https://github.com/azdim"
+    weight = 30
+
+[[menu.main]]
+    identifier = "linkedin"
+    name = "Connect"
+    pre = "<i class='fab fa-linkedin'></i>"
+    url = "https://www.linkedin.com/in/dtperera"
+    weight = 30
