@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dim</title>
+    <link>https://azdim.github.io/</link>
+    <description>Recent content on Dim</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 27 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://azdim.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About Me</title>
+      <link>https://azdim.github.io/blog/about/</link>
+      <pubDate>Sun, 27 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://azdim.github.io/blog/about/</guid>
+      <description>Me My name is Dimuthu but everyone calls me Dim.
+Education I have completed a Masters in Physics at University College London where I attempted to build a gravitational wave detector in my final year.
+Work I am curently a consultant cloud engineer with Kubrick group and I am currently placed at Astrazeneca supporting their production of a novel HPC platform.</description>
+    </item>
+    
+  </channel>
+</rss>
