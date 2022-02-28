@@ -1,11 +1,10 @@
 ---
 title: "Terraform 101"
-description: ""
+description: "An introduction to terraform"
 date: 2022-02-27
 images: ["avatar2.jpg"]
-tags: ["about"]
+tags: ["terraform"]
 ---
-
 ## What is terraform?
 
 Terraform is a widely used Infrastructure as Code (IaC) tool. This is a tool that is cloud agnostic, therefore can interact with a wide range of supported cloud providers.
