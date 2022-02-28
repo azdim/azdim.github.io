@@ -1,15 +1,15 @@
 /* General */
 body {
-  background-color: #bbaf9c;
+  background-color: #efefef;
   color: #000000;
 }
 
 a:link {
-  color: #fff7f7;
+  color: #000000;
 }
 
 a:visited {
-  color: #ffffff;
+  color: #000000;
 }
 
 a:hover {
@@ -44,7 +44,7 @@ mark {
 }
 
 #tags li a {
-  background-color: #222020;
+  background-color: #efefef;
 }
 
 #contentsList hr.separator {
