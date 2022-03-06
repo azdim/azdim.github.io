@@ -54,3 +54,9 @@ mark {
 img.avatar-border {
   filter: invert(100%);
 }
+
+#contentBody table th, #contentBody table td {
+  padding: 6px 13px;
+  border: 1px solid #a89f9f;
+  background-color: #ac9c9c;
+}

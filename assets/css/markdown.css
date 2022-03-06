@@ -426,6 +426,8 @@
 
 #contentBody table th {
   font-weight: 600;
+  border: 1px solid #921e1e;
+  background-color: #090909;
 }
 
 #contentBody table th,
