@@ -17,11 +17,11 @@
   
   
   
-  <link rel="stylesheet" href="https://azdim.github.io/style.min.9a755d4526aca7761f18f382c49b2d29ae825361034894d6357a93f614c1ea53.css" integrity="sha256-mnVdRSasp3YfGPOCxJstKa6CU2EDSJTWNXqT9hTB6lM=">
+  <link rel="stylesheet" href="https://azdim.github.io/style.min.20b4f8ab3799ae5e45220912ea8ece8528ab0e592f6833faf10d08e339453039.css" integrity="sha256-ILT4qzeZrl5FIgkS6o7OhSirDlkvaDP68Q0I4zlFMDk=">
   
   
   
-  <link rel="stylesheet" href="https://azdim.github.io/style-dark.min.80eb3c2d7f87680a26111f575d4a9c2dd835bb39a4aeb4faeadd225f0402a612.css" media="(prefers-color-scheme: dark)" integrity="sha256-gOs8LX&#43;HaAomER9XXUqcLdg1uzmkrrT66t0iXwQCphI=">
+  <link rel="stylesheet" href="https://azdim.github.io/style-dark.min.4dd51b5bf97c13cb0a5d3bf00c561ce99f0c7e97b3941ddae3760e464a392206.css" media="(prefers-color-scheme: dark)" integrity="sha256-TdUbW/l8E8sKXTvwDFYc6Z8MfpezlB3a43YORko5IgY=">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
   
@@ -37,7 +37,7 @@
 <meta itemprop="name" content="Terraform 101">
 <meta itemprop="description" content="An introduction to terraform"><meta itemprop="datePublished" content="2022-02-27T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-02-27T00:00:00+00:00" />
-<meta itemprop="wordCount" content="295"><meta itemprop="image" content="https://azdim.github.io/avatar2.jpg">
+<meta itemprop="wordCount" content="2105"><meta itemprop="image" content="https://azdim.github.io/avatar2.jpg">
 <meta itemprop="keywords" content="terraform," /><meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://azdim.github.io/avatar2.jpg"/>
 
@@ -96,12 +96,298 @@
 <p>As an engineer you may find yourself having to provision several resources on a cloud platform. If you were to create it manually through the CLI or a webportal you would find that creating copies of the same resource can be time consuming. Furthermore removing these resources can prove to be tedious as one resource may also have other attached resources that also need to be removed. As an example if you were to provision a virtual machine on any cloud provider you would need to have a boot volume attached to it which is created at the time the virtual machine is created. If you were to delete the virtual machine it is possible that the volume is still lingering around which might also affect your overall cost. Terraform overcomes this problem by using something called a state file <code>terraform.tfstate</code>. This file contains all the information of the resources that were provisioned and therefore if you were to delete your resources terraform would make sure to delete all that was created.</p>
 <h2 id="where-do-i-start-with-terraform-">Where do I start with terraform ?</h2>
 <p>Let&rsquo;s begin with a very simple yet effective project that will cover many aspects of terraform and should give you the foundation you need.</p>
+<h3 id="project-goal">Project goal</h3>
+<p>The goal of this project is to create a repository on GitHub using terraform. We will manually create a repository which will contain the initial terraform code, thereafter all future code repositories will be created and managed using terraform.</p>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
 <li><input disabled="" type="checkbox"> I have an IDE installed. An IDE such as VSCode of PyCharm is recommended.</li>
 <li><input disabled="" type="checkbox"> I have terraform installed. Terraform can be installed through brew (Mac), Chocolatey (Windows) and apt for Linux <a href="https://www.terraform.io/downloads">Instructions</a></li>
+<li><input disabled="" type="checkbox"> I have configured Git <a href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup">Instructions can be found here</a></li>
 <li><input disabled="" type="checkbox"> I have a GitHub account.</li>
+<li><input disabled="" type="checkbox"> I have added my ssh key to GitHub <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">Instructions can be found here</a></li>
 <li><input disabled="" type="checkbox"> I have a GitHub token saved. This token should have repo level access. <a href="https://docs.github.com/en/enterprise-server@3.3/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">How to create a PAT token.</a></li>
+<li><input disabled="" type="checkbox"> I have created an empty repository manually. You can call this repository terrafrom_github_repository (a naming convention always helps).</li>
+</ul>
+<h4 id="step-1">Step 1</h4>
+<p>Clone the created github repository and checkout to a new branch</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone git@github.com:&lt;username&gt;/&lt;repo&gt;
+
+git checkout -b initial_terraform_code
+</code></pre></div><h4 id="step-2">Step 2</h4>
+<ul>
+<li>Create the following files</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># you can use the following command in bash or make the files manually</span>
+
+touch main.tf providers.tf .gitignore repositories.yml README.md
+
+</code></pre></div><h4 id="why-did-we-create-these-files">Why did we create these files?</h4>
+<hr>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">File name</th>
+<th style="text-align:right">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">main.tf</td>
+<td style="text-align:right">This file will contain some terraform configuration</td>
+</tr>
+<tr>
+<td style="text-align:left">providers.tf</td>
+<td style="text-align:right">This file will also contain some terraform configuration</td>
+</tr>
+<tr>
+<td style="text-align:left">repositories.yml</td>
+<td style="text-align:right">This file will contain repository related configuration</td>
+</tr>
+<tr>
+<td style="text-align:left">README.md</td>
+<td style="text-align:right">A readme file is always recommended. Explain what this repo is.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="does-terraform-care-how-many-or-how-few-tf-files-are-in-on-repo">Does terraform care how many or how few .tf files are in on repo?</h4>
+<ul>
+<li>Terraform does not care but you should. Think of .tf files as parts of a recipe. Terraform will merge all these parts together and create the resources. However in terms of best practices it is compulsory that we create .tf files that each contain a purpose. When your code works it is great, but its about preparing for when it doesn&rsquo;t. Fracturing the recipe allows you the developer to resolve issues much faster. <code>main.tf</code> is a file that is commonly found in a terraform code repository and usually contains the core infrastructure that is created. <code>providers.tf</code> or <code>versions.tf</code> is where terraform providers are mentioned. Providers are what allows terraform to create infrastructure inline with a given cloud provider. Microsoft calls their virtual machine virtual machines but Amazon calls them EC2 instances. A provider allows you to configure resources according to the platform upon which they will be provisioned. More on providers later.</li>
+</ul>
+<h4 id="how-do-i-populate-these-files">How do I populate these files?</h4>
+<ul>
+<li>There are two web site that are crucial to any terraform related development regardless of skill level.</li>
+</ul>
+<ol>
+<li>
+<p><a href="https://registry.terraform.io">Terraform registry</a></p>
+</li>
+<li>
+<p><a href="https://www.terraform.io/language">Terraform syntax</a></p>
+</li>
+</ol>
+<ul>
+<li>Terraform registry hosts all the necessary configuration that you will need to deploy infrastructure to any cloud provider.</li>
+<li>Terraform.io will provides you with the syntax of HCL2 (Hashicorp Configuration Language).</li>
+</ul>
+<h4 id="step-3">step 3</h4>
+<ul>
+<li>
+<p>Navigate to terraform registry, select browse modules and enter the following into the search bar <code>operatehappy/repository</code>.</p>
+</li>
+<li>
+<p><code>operatehappy/repository</code> is an example of a <strong>Terraform Module</strong>. The concept of a <a href=".https://www.terraform.io/language/modules/develop">terraform module</a> is an extremely important terraform concept and one that requires its own blog post. So for now just remember that a terraform module is a single interface that allows you to create repeatable infrastructure.</p>
+</li>
+<li>
+<p>If you had a chance to glance over the Github repository for this module you would have come across the required [dependencies]. The dependency for this module is the <a href="https://registry.terraform.io/providers/integrations/github/latest/docs">GitHub provider</a>. Go ahead and click on use provider on the top right hand corner. Copy the code block into as you guessed it <code>providers.tf.</code></p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#a6e22e">terraform</span> {
+  <span style="color:#a6e22e">required_providers</span> {
+    <span style="color:#a6e22e">github</span> = {
+      <span style="color:#a6e22e">source</span> = <span style="color:#e6db74">&#34;integrations/github&#34;</span>
+      <span style="color:#a6e22e">version</span> = <span style="color:#e6db74">&#34;4.20.1&#34;</span>
+    }
+  }
+}
+<span style="color:#66d9ef">
+</span><span style="color:#66d9ef">provider</span> <span style="color:#e6db74">&#34;github&#34;</span> {
+
+}
+</code></pre></div><h4 id="step-4">Step 4</h4>
+<ul>
+<li>Copy and paste the following code block onto your <code>main.tf</code>.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#a6e22e">locals</span> {
+  <span style="color:#a6e22e">terraform_prefix</span> = <span style="color:#e6db74">&#34;terraform&#34;</span>
+  <span style="color:#a6e22e">repo</span>             = yamldecode(file(<span style="color:#e6db74">&#34;repositories.yml&#34;</span>))
+  <span style="color:#a6e22e">topics</span>           = [<span style="color:#e6db74">&#34;github&#34;</span>]
+}
+<span style="color:#66d9ef">
+</span><span style="color:#66d9ef">
+</span><span style="color:#66d9ef">
+</span><span style="color:#66d9ef">module</span> <span style="color:#e6db74">&#34;myrepos_module&#34;</span> {
+  <span style="color:#a6e22e">for_each</span>               = <span style="color:#a6e22e">local</span>.<span style="color:#a6e22e">repo</span>.<span style="color:#a6e22e">repos</span>.<span style="color:#a6e22e">repositories</span>
+  <span style="color:#a6e22e">source</span>                 = <span style="color:#e6db74">&#34;operatehappy/repository/github&#34;</span>
+  <span style="color:#a6e22e">version</span>                = <span style="color:#e6db74">&#34;3.0.0&#34;</span>
+  <span style="color:#a6e22e">name</span>                   = each.<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">name</span>
+  <span style="color:#a6e22e">visibility</span>             = each.<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">visibility</span>
+  <span style="color:#a6e22e">description</span>            = each.<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">description</span>
+  <span style="color:#a6e22e">topics</span>                 = compact(<span style="color:#a6e22e">flatten</span>([<span style="color:#a6e22e">local</span>.<span style="color:#a6e22e">topics</span>, try(each.<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">topics</span>, <span style="color:#e6db74">&#34;&#34;</span>)]))
+  <span style="color:#a6e22e">license_template</span>       = <span style="color:#e6db74">&#34;apache-2.0&#34;</span>
+  <span style="color:#a6e22e">allow_merge_commit</span>     = <span style="color:#66d9ef">false</span>
+  <span style="color:#a6e22e">delete_branch_on_merge</span> = <span style="color:#66d9ef">true</span>
+  <span style="color:#a6e22e">default_branch</span>         = <span style="color:#e6db74">&#34;main&#34;</span>
+}
+</code></pre></div><h4 id="breaking-down-the-code">Breaking down the code</h4>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#a6e22e">locals</span> {
+  <span style="color:#a6e22e">terraform_prefix</span> = <span style="color:#e6db74">&#34;terraform&#34;</span>
+  <span style="color:#a6e22e">decoded_repos</span>            = yamldecode(file(<span style="color:#e6db74">&#34;repositories.yml&#34;</span>))
+  <span style="color:#a6e22e">topics</span>           = [<span style="color:#e6db74">&#34;github&#34;</span>]
+}
+
+</code></pre></div><!-- raw HTML omitted -->
+<p><strong>locals</strong>  stanza can (stanza in HCL2 is a code block that capture information with {} brackets) be thought of as a list on internal variables. Here we have defined a variable terraform_prefix as string terraform, topics as an array which has a single string element github. And then we have the repo variable which is a dictionary and makes use of a built-in terraform function.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre tabindex="0"><code>module &quot;myrepos_module&quot; {
+  for_each               = local.decoded_repos.terraform_repos.repositories
+  source                 = &quot;operatehappy/repository/github&quot;
+  version                = &quot;3.0.0&quot;
+  name                   = each.value.name
+  visibility             = each.value.visibility
+  description            = each.value.description
+  topics                 = compact(flatten([local.topics, try(each.value.topics, &quot;&quot;)]))
+  license_template       = &quot;apache-2.0&quot;
+  allow_merge_commit     = false
+  delete_branch_on_merge = true
+  default_branch         = &quot;main&quot;
+}
+</code></pre><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>The GitHub module interface  as I like to call it (formally called the module block) which takes in user inputs and creates repositories based on those inputs. There are several key functions that at first glance may not seem apparent. I will elaborate further on these built-in terraform features after populating the repositories.yml file.</p>
+<!-- raw HTML omitted -->
+<ul>
+<li>There are several key functions that at first glance may not seem apparent. I will elaborate further on these built-in terraform features after populating the repositories.yml file.</li>
+</ul>
+<h4 id="step-5">Step 5</h4>
+<ul>
+<li>Populate the repositories.yml file with the following. I recommend you change the values and test it on your own.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-YAML" data-lang="YAML">---
+<span style="color:#f92672">terraform_repos</span>:
+  <span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;This is a terraform built repository.&#34;</span>
+  <span style="color:#f92672">repositories</span>:
+    <span style="color:#f92672">terraform_repo</span>:
+      <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;terraform_repository_1&#34;</span>
+      <span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;This is my first terraform repository.&#34;</span>
+      <span style="color:#f92672">topics</span>: [<span style="color:#e6db74">&#34;terraform&#34;</span>,<span style="color:#e6db74">&#34;myfirstrepo&#34;</span>]
+      <span style="color:#f92672">visibility</span>: <span style="color:#e6db74">&#34;public&#34;</span>
+
+</code></pre></div><ul>
+<li>
+<p>If you look at the locals within main.tf you will find that the variable <code>repo</code> is equal to <code>yamldecode(file(&quot;repositories.yml&quot;))</code>. There are two built-in features here the first is <a href="https://www.terraform.io/language/functions/file"><code>file</code></a>, which is a file system function that reads the contents of a file you can think of file as being similar to the <code>cat</code> bash function. The second function is <a href="https://www.terraform.io/language/functions/yamldecode"><code>yamldecode</code></a> which decodes YAML strings and produces key value pairs. So when you put both together the <code>file</code> function reads the repositories.yml file and provides the input for the <code>yamldecode</code> function, which will produce key-value pairs.</p>
+</li>
+<li>
+<p>Now within the module block an argument <a href="https://www.terraform.io/language/meta-arguments/for_each"><code>for_each</code></a> has been defined. Imagine the you have a function f(x) = x + 1 and you want to iterate f(x) through a range of x value you would use a for loop in Python. The <code>for_each</code> argument is very similar but in this case f(x) is the infrastructure created through the module and x is whatever <code>for_each</code> has been defined as.</p>
+</li>
+<li>
+<p>The <code>for_each</code> argument here is set to <code>local.decoded_repos.terraform_repositories.repositories</code>. In other words you are asking terraform the following, for each repository value defined under repositories (line 4 YAML file) under the terraform_repositories group (line 1 YAML file) within the repositories.yml file create an instance of this module. That definition can be confusing but creating multiple repositories might help you understand it better. However for this project we will start with one.</p>
+</li>
+</ul>
+<hr>
+<h2 id="look-back-at-the-module-block">Look back at the module block</h2>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#a6e22e">for_each</span>               = <span style="color:#a6e22e">local</span>.<span style="color:#a6e22e">repo</span>.<span style="color:#a6e22e">repos</span>.<span style="color:#a6e22e">repositories</span>
+</code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>How many repositories need to be created but also create a key-value pair. The key is the value at line-6 of the YAML file. And all the attributes within that key become values of that key.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#a6e22e">source</span>                 = <span style="color:#e6db74">&#34;operatehappy/repository/github&#34;</span>
+</code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Where should terraform get this repository from. Remember since this module is available within terraform registry all you need to set as a source is the name of the module. If however you need to use your own module hosted in git you can refer to <a href="https://www.terraform.io/language/modules/sources">this link</a>.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#a6e22e">version</span>                = <span style="color:#e6db74">&#34;3.0.0&#34;</span>
+</code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Version of the module</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#a6e22e">name</span>                   = each.<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">name</span>
+</code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>As mentioned within the for_each explanation. The keys created by the for_each argument will contain values associated with those keys. These values can the be referred using each.value.some_value_name and in this case some_value_name is <strong>name</strong> (line-6 YAML). Therefore each.value.name will be <strong>terraform_repository_1</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#a6e22e">visibility</span>             = each.<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">visibility</span>
+<span style="color:#a6e22e">description</span>            = each.<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">description</span>
+</code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>These follow the same explanation as name.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#a6e22e">topics</span>                 = compact(<span style="color:#a6e22e">flatten</span>([<span style="color:#a6e22e">local</span>.<span style="color:#a6e22e">topics</span>, try(each.<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">topics</span>, <span style="color:#e6db74">&#34;&#34;</span>)]))
+</code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>More built-in tricks! I will explain these built-in features right after breaking down the module. But topics will set the topics or labels for this repository, which can be seen in the About section of the repository. In this example the topics are terraform, github and myfirstrepo.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#a6e22e">license_template</span>       = <span style="color:#e6db74">&#34;apache-2.0&#34;</span>
+<span style="color:#a6e22e">allow_merge_commit</span>     = <span style="color:#66d9ef">false</span>
+<span style="color:#a6e22e">delete_branch_on_merge</span> = <span style="color:#66d9ef">true</span>
+<span style="color:#a6e22e">default_branch</span>         = <span style="color:#e6db74">&#34;main&#34;</span>
+</code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>The license file is available on GitHub by default. <strong>allow_merge_commit</strong> is disabled so not all commits are added to the main branch. <strong>delete_branch_on_merge</strong> this will delete the remote branch once a pull request is complete. <strong>default_branch</strong> is set to main.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h3 id="breakdown-of-the-topics-variable">Breakdown of the topics variable</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terraform" data-lang="terraform"><span style="color:#a6e22e">topics</span>                 = compact(<span style="color:#a6e22e">flatten</span>([<span style="color:#a6e22e">local</span>.<span style="color:#a6e22e">topics</span>, try(each.<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">topics</span>, <span style="color:#e6db74">&#34;&#34;</span>)]))
+</code></pre></div><ul>
+<li>
+<p>Let&rsquo;s begin with try. The <a href="https://www.terraform.io/language/functions/try">try</a> function will return the value that is first to not give an error. So in this case <code>try(each.value.topics, &quot;&quot;)</code> so if the topics value is not defined within the YAML file instead of giving an error due to a null value the try function will output and empty string <code>&quot;&quot;</code>.</p>
+</li>
+<li>
+<p>The result of the try function is then passed onto flatten. <a href="https://www.terraform.io/language/functions/flatten">Flatten</a> will merge any lists within a list into one long list. In this case we have defined <code>local.topics</code> which is equal to <code>[&quot;github&quot;]</code> and <code>each.value.topics</code> which is equal to <code>[&quot;terraform&quot;,&quot;myfirstrepo&quot;]</code>. Flatten will create a new list <code>[&quot;terraform&quot;,&quot;myfirstrepo&quot;,&quot;github&quot;]</code>.</p>
+</li>
+<li>
+<p>This is then passed onto compact. <a href="https://www.terraform.io/language/functions/compact">Compact</a> removed any empty strings from a list. So if <code>each.value.topics</code> had no value the <code>try</code> function would output <code>&quot;&quot;</code> which would then be flattened into <code>[&quot;github&quot;, &quot;&quot;]</code> and flatten would then remove <code>&quot;&quot;</code> which would result in the final list being <code>[&quot;github&quot;]</code>.</p>
+</li>
+<li>
+<p>I know I didn&rsquo;t need to complicate <code>topics</code> this much, however it was a good opportunity to show built-in functions that may prove to be useful to you later.</p>
+</li>
+</ul>
+<h4 id="step-6">Step 6</h4>
+<ul>
+<li>
+<p>Export your GitHub PAT token as an environment variable. This was a prerequisite.</p>
+</li>
+<li>
+<p>Run the following command to initialise terraform. This will download a local copy of the module and any other dependencies. It will also create a local terraform state file which will hold the configuration of the infrastructure deployed through terraform. A <code>.terraform.lock.hcl</code> file will be created and will hold version of to provider. As a best practice the <code>.terraform, .terraform.tfstate , .terraform.lock.hcl and terraform.tfstate.backup</code> files should all be in your <code>.gitignore</code>. In a production environment you will be using a remote backend. However that costs money and we will not need that for this project.</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+export GITHUB_TOKEN<span style="color:#f92672">=</span><span style="color:#ae81ff">123234254534</span>
+
+terraform init
+
+</code></pre></div><h4 id="step-7">Step 7</h4>
+<p>Let&rsquo;s plan what infrastructure terraform will be creating. Notice I am using the <code>-out.tfplan</code> flag here. This is not necessary but I recommend you start getting in the habit of doing it to avoid any terraform related confusion. This command will create a <code>plan.tfplan</code> file which should also be within the <code>.gitignore</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+terraform plan -out<span style="color:#f92672">=</span>plan.tfplan
+</code></pre></div><h4 id="step-8">Step 8</h4>
+<ul>
+<li>Let&rsquo;s create the repository!</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+terraform apply plan.tfplan
+
+</code></pre></div><h4 id="step-9">Step 9</h4>
+<ul>
+<li>Go checkout your repo! And add to the repositories.yml and plan and apply the changes and see what happens.</li>
+</ul>
+<h2 id="final-remarks">Final remarks</h2>
+<ul>
+<li>Thank you for making it this far I understand that I covered some high level concepts in 101 blog. I hope you will find this useful either personally or within an organization you are a part of. You have not only learned the basics of terraform but also used some clever built-in tools. I did not cover terraform variables or outputs but I will in a future post. Thank you!</li>
 </ul>
 
   </div>
