@@ -98,7 +98,7 @@ terraform {
 }
 
 provider "github" {
-  
+
 }
 ```
 
@@ -137,7 +137,7 @@ module "myrepos_module" {
 <td> Code Block </td> <td> Breakdown </td>
 </tr>
 <tr>
-<td> 
+<td>
 
 ```terraform
 locals {
@@ -156,7 +156,7 @@ locals {
 </td>
 </tr>
 <tr>
-<td> 
+<td>
 
 ```
 module "myrepos_module" {
@@ -218,7 +218,7 @@ terraform_repos:
 <td> Code Block </td> <td> Purpose </td>
 </tr>
 <tr>
-<td> 
+<td>
 
 ```terraform
 for_each               = local.repo.repos.repositories
@@ -235,7 +235,7 @@ How many repositories need to be created but also create a key-value pair. The k
 </tr>
 
 <tr>
-<td> 
+<td>
 
 ```terraform
 source                 = "operatehappy/repository/github"
@@ -254,7 +254,7 @@ Where should terraform get this repository from. Remember since this module is a
 </tr>
 
 <tr>
-<td> 
+<td>
 
 ```terraform
 version                = "3.0.0"
@@ -272,7 +272,7 @@ Version of the module
 
 <tr>
 
-<td> 
+<td>
 
 ```terraform
 name                   = each.value.name
@@ -292,7 +292,7 @@ As mentioned within the for_each explanation. The keys created by the for_each a
 
 <tr>
 
-<td> 
+<td>
 
 ```terraform
 visibility             = each.value.visibility
@@ -315,7 +315,7 @@ These follow the same explanation as name.
 
 <tr>
 
-<td> 
+<td>
 
 ```terraform
 topics                 = compact(flatten([local.topics, try(each.value.topics, "")]))
@@ -333,7 +333,7 @@ More built-in tricks! I will explain these built-in features right after breakin
 
 <tr>
 
-<td> 
+<td>
 
 ```terraform
 license_template       = "apache-2.0"
