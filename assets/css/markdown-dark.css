@@ -46,11 +46,17 @@
   color: #000000;
 }
 
+#contentBody table th {
+  font-weight: 600;
+  border: 1px solid #921e1e;
+  background-color: #090909;
+}
+
 #contentBody table th,
 #contentBody table td {
   padding: 6px 13px;
   border: 1px solid #363636;
-  background-color: #090909;
+  background-color: #efefef;
 }
 
 #contentBody img {
