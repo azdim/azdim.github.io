@@ -14,7 +14,7 @@
 .highlight .ge {  } /* Generic.Emph */
 .highlight .gr {  } /* Generic.Error */
 .highlight .gh { color: #005cc5 } /* Generic.Heading */
-.highlight .gi { color: #22863a; background-color: #f0fff4 } /* Generic.Inserted */
+.highlight .gi { color: #ff0000; background-color: #f0fff4 } /* Generic.Inserted */
 .highlight .go {  } /* Generic.Output */
 .highlight .gp {  } /* Generic.Prompt */
 .highlight .gs { font-weight: bold } /* Generic.Strong */
