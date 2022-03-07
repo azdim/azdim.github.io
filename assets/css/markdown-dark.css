@@ -17,7 +17,7 @@
 
 #contentBody kbd {
   color: #bbb2a9;
-  background-color: #050403;
+  background-color: #000000;
   border: solid 1px #39342e;
   border-bottom-color: #6a625a;
   box-shadow: none;
@@ -37,7 +37,7 @@
 }
 
 #contentBody h2 {
-  border-bottom: 1px solid #050404;
+  border-bottom: 1px solid #000000;
 }
 
 
@@ -65,7 +65,7 @@
 
 
 #contentBody code {
-  background-color: #090909;
+  background-color: #000000;
 }
 
 #contentBody .highlight pre,
@@ -81,7 +81,7 @@
 #contentBody kbd {
   color: #bbb2a9;
   background-color: #050403;
-  border: solid 1px #2e2a25;
+  border: solid 10px #2e2a25;
   border-bottom-color: #39342e;
   box-shadow: none;
 }
