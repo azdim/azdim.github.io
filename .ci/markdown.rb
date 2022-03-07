@@ -11,3 +11,12 @@ exclude_rule 'MD033' # Inline HTML
 exclude_rule 'MD002'
 
 exclude_rule 'MD026'
+exclude_rule 'MD004'
+
+exclude_rule 'MD012'
+
+exclude_rule 'MD029'
+
+exclude_rule 'MD031'
+
+exclude_rule 'MD034'
