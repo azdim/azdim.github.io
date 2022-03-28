@@ -6,13 +6,58 @@
     <description>Recent content in Tags on Dim</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 27 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://azdim.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://azdim.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>git</title>
+      <link>https://azdim.github.io/tags/git/</link>
+      <pubDate>Mon, 28 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://azdim.github.io/tags/git/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>about</title>
       <link>https://azdim.github.io/tags/about/</link>
       <pubDate>Sun, 27 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>https://azdim.github.io/tags/about/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ansible</title>
+      <link>https://azdim.github.io/tags/ansible/</link>
+      <pubDate>Sun, 27 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://azdim.github.io/tags/ansible/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hashicorp</title>
+      <link>https://azdim.github.io/tags/hashicorp/</link>
+      <pubDate>Sun, 27 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://azdim.github.io/tags/hashicorp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nomad</title>
+      <link>https://azdim.github.io/tags/nomad/</link>
+      <pubDate>Sun, 27 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://azdim.github.io/tags/nomad/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>packer</title>
+      <link>https://azdim.github.io/tags/packer/</link>
+      <pubDate>Sun, 27 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://azdim.github.io/tags/packer/</guid>
       <description></description>
     </item>
     

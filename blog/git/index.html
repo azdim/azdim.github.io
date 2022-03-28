@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>
+      
+          Better code commits - Dim
+      
+  </title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="" />
+  <link rel="shortcut icon" type="image/x-icon" href="https://azdim.github.io/img/avatar2.png">
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://azdim.github.io/style.min.9ad406f2d28f3db0696e2e741a982a388682ed12161e502174ef0b21384960cf.css" integrity="sha256-mtQG8tKPPbBpbi50GpgqOIaC7RIWHlAhdO8LIThJYM8=">
+  
+  
+  
+  <link rel="stylesheet" href="https://azdim.github.io/style-dark.min.543867e1ec542f3ff1d11689d15571e41de35742ce956c191df39d29defd0fb6.css" media="(prefers-color-scheme: dark)" integrity="sha256-VDhn4exULz/x0RaJ0VVx5B3jV0LOlWwZHfOdKd79D7Y=">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+  
+  
+
+  <meta property="og:title" content="Better code commits" />
+<meta property="og:description" content="It is important to have tested code as well as clear commit messages." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://azdim.github.io/blog/git/" /><meta property="og:image" content="https://azdim.github.io/avatar2.jpg" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2022-03-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-28T00:00:00+00:00" />
+
+<meta itemprop="name" content="Better code commits">
+<meta itemprop="description" content="It is important to have tested code as well as clear commit messages."><meta itemprop="datePublished" content="2022-03-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-03-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="726"><meta itemprop="image" content="https://azdim.github.io/avatar2.jpg">
+<meta itemprop="keywords" content="git," /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://azdim.github.io/avatar2.jpg"/>
+
+<meta name="twitter:title" content="Better code commits"/>
+<meta name="twitter:description" content="It is important to have tested code as well as clear commit messages."/>
+
+  <!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <![endif]-->
+
+  
+  
+</head>
+
+  <body>
+    
+  <h1>Better code commits</h1>
+  <header>
+  
+  <div class="avatar">
+    <img class="avatarMask" src="https://azdim.github.io/img/avatar2.png" alt="">
+    <a href="https://azdim.github.io"><img class="avatar-border" src="https://azdim.github.io/img/avatar-border.svg" alt=""></a>
+  </div>
+  
+  <h2><a class="author" href="https://azdim.github.io"></a></h2>
+</header>
+
+  
+  
+  
+  <p class="date">March 28, 2022</p>
+  
+  
+  
+  <div id="tags">
+    <ul>
+      
+        
+        
+          <li><a href="https://azdim.github.io/tags/git/">git</a></li>
+        
+      
+    </ul>
+  </div>
+  
+  
+  <div id="contentBody">
+    <h2 id="introduction">Introduction</h2>
+<p>As a DevOps/Cloud engineer git is a core tool in our arsenal. A git commit is an action that we execute daily, hourly and sometimes even shorter. I do hope that you the reader are not committing code every second, that would be shocking. Committing code not only creates a snapshot of the work you have done but also describes the work you have done in a commit message.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git add .
+
+git commit -m <span style="color:#e6db74">&#34;It works&#34;</span>
+</code></pre></div><p>By the end of this post I sincerely hope that the two commands above are not the only ones you will run prior to pushing code. And in the case of the second command, well it is trash.</p>
+<h2 id="why-the-fuss">Why the fuss?</h2>
+<p>Git provides a <a href="https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows">decentralised workflow</a>, where you as an engineer contribute to a repository that others also contribute to. It is therefore important that a commit provides a clear insight to changes that have been made for quicker debugging (time is money). It is also important that we test our code for linting issues. Your code doesn&rsquo;t need to work but it needs to look good. Errors are meant to happen.</p>
+<p>These days CI/CD pipelines are triggered on git pushes and so it is important to do everything you can to prevent a failure in the pipeline.</p>
+<h2 id="so-how-do-i-make-my-code-better">So how do I make my code better?</h2>
+<p>Here I will introduce two tools</p>
+<ol>
+<li><a href="https://pre-commit.com">pre-commit</a>: This tool will be used for code testing</li>
+<li><a href="https://commitizen-tools.github.io/commitizen/">commitizen</a>: Create better commits</li>
+</ol>
+<h2 id="what-is-pre-commit">What is pre-commit?</h2>
+<p>Pre-commit is a python package which acts as a framework for managing pre-commit hooks. Pre-commit allows you to run several staged code checks prior to committing your changes.</p>
+<h2 id="why-use-pre-commit">Why use pre-commit?</h2>
+<p>To save time and money! Once a code gets pushed into git and your pipeline kicks off, it can take a few seconds or minutes to find where an error came from. So using pre-commit we can prevent simple errors such as terraform validation or even simpler YAML lint!</p>
+<h2 id="where-do-i-start-with-pre-commit">Where do I start with pre-commit?</h2>
+<p>We are going to add a pre-commit config to the terraform code we have built in the previous post. If you haven&rsquo;t gone through it or don&rsquo;t want to, that is absolutely fine. Add a pre-commit config to any code you are working on and make it a habit. Adding a pre-commit config to a template repository is a perfect way to introduce this tool to a wider team.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li><input disabled="" type="checkbox"> I have python installed. <a href="https://www.python.org/downloads/">Installing Python</a></li>
+<li><input disabled="" type="checkbox"> I have an IDE installed. An IDE such as VSCode of PyCharm is recommended.</li>
+<li><input disabled="" type="checkbox"> I have configured Git <a href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup">Instructions can be found here</a></li>
+<li><input disabled="" type="checkbox"> I have some code ready.</li>
+<li><input disabled="" type="checkbox"> I have pip installed. <a href="https://pip.pypa.io/en/stable/installation/">Installing pip</a></li>
+</ul>
+<h4 id="step-1">Step 1</h4>
+<ul>
+<li>Install pre-commit</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install pre-commit
+</code></pre></div><h4 id="step-2">Step 2</h4>
+<ul>
+<li>Check that pre-commit is installed</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pre-commit --version
+
+<span style="color:#75715e">## output should look similar to this</span>
+
+pre-commit 2.17.0
+
+</code></pre></div><h4 id="step-3">Step 3</h4>
+<ul>
+<li>Create a config file for pre-commit</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">touch .pre-commit-config.yaml
+</code></pre></div><ul>
+<li>The config file will tell pre-commit what tests we need it to run.</li>
+</ul>
+<h4 id="step-4">Step 4</h4>
+<ul>
+<li>
+<p>Populate the config file with the following</p>
+</li>
+<li>
+<p>List of hooks available <a href="https://pre-commit.com/hooks.html">here.</a></p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-YAML" data-lang="YAML">---
+-   <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">https://github.com/pre-commit/pre-commit-hooks</span> <span style="color:#75715e">#name of repo with hook</span>
+    <span style="color:#f92672">rev</span>: <span style="color:#ae81ff">v4.1.0</span> <span style="color:#75715e"># version of the repo (tag) or branch</span>
+    <span style="color:#f92672">hooks</span>:
+    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">trailing-whitespace</span> <span style="color:#75715e">#id of the hook. Some repos have multiple hooks</span>
+</code></pre></div><h4 id="step-5">Step 5</h4>
+<ul>
+<li>Stage your code and run pre-commit</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+git status
+git add .
+pre-commit install <span style="color:#75715e"># run pre-commit every time you run a commit command. You can skip it for now.</span>
+pre-commit run --all-files
+
+<span style="color:#75715e">#output should look something like this</span>
+Trim Trailing Whitespace.................................................Passed
+</code></pre></div><ul>
+<li>If you have followed the terraform related blog then add the following hooks and run pre-commit</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-YAML" data-lang="YAML">-   <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">https://github.com/gruntwork-io/pre-commit</span>
+    <span style="color:#f92672">rev</span>: <span style="color:#ae81ff">v0.1.17</span>
+    <span style="color:#f92672">hooks</span>:
+      - <span style="color:#f92672">id</span>: <span style="color:#ae81ff">terraform-fmt</span>
+      - <span style="color:#f92672">id</span>: <span style="color:#ae81ff">terraform-validate</span>
+      - <span style="color:#f92672">id</span>: <span style="color:#ae81ff">tflint</span>
+</code></pre></div><ul>
+<li>Great now we have good looking code. Let&rsquo;s commit!</li>
+</ul>
+<h2 id="what-is-commitizen">What is commitizen?</h2>
+<p>Commitizen is a Python package for writing descriptive and standardized commits across teams. It also allows for changelog creation once you release a new version of the code base you are working on.</p>
+<h2 id="why-use-commitizen">Why use commitizen?</h2>
+<ol>
+<li>Create a commit standard across your team.</li>
+<li>Capture work items (Jira tickets or Azure board tickets) within your commit.</li>
+<li>Create commit prefixes that you can trigger pipelines base on.</li>
+<li>Many more!</li>
+</ol>
+<h2 id="where-do-i-start-with-commitizen">Where do I start with commitizen?</h2>
+<ul>
+<li>You just need to install this tool and create great commits</li>
+</ul>
+<h4 id="step-1-1">Step 1</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+pip install -U commitizen
+
+<span style="color:#75715e">#alternatives</span>
+
+sudo pip3 install -U Commitizen
+
+brew install commitizen
+
+</code></pre></div><h4 id="step-2-1">Step 2</h4>
+<ul>
+<li>Commit!</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cz commit
+</code></pre></div>
+  </div>
+  <footer>
+  <p>
+  &copy; 2022 .
+  Powered by <a href="https://gohugo.io/">Hugo</a>
+  using the <a href="https://github.com/koirand/pulp/">pulp</a> theme.
+  </p>
+</footer>
+
+
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hashicorp on Dim</title>
+    <link>https://azdim.github.io/tags/hashicorp/</link>
+    <description>Recent content in Hashicorp on Dim</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 27 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://azdim.github.io/tags/hashicorp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nomad 101</title>
+      <link>https://azdim.github.io/blog/nomad/</link>
+      <pubDate>Sun, 27 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://azdim.github.io/blog/nomad/</guid>
+      <description>What is Nomad? Nomad is an application/workload scheduler and if often compared to Kubernetes. Kubernetes and Nomad share similarities but are also different they can be used in conjuction to one another as well as individually. Depending on the requirement the tool will change. If you have Docker workloads that need to scale out with zero downtime then Nomad is the perfect tool. As of writing this article Nomad is at version 1.</description>
+    </item>
+    
+    <item>
+      <title>Packer 101</title>
+      <link>https://azdim.github.io/blog/packer/</link>
+      <pubDate>Sun, 27 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://azdim.github.io/blog/packer/</guid>
+      <description>What is packer? Packer is a compute image build tool which would allow a user to build custom compute images.
+Why use packer? The reason this is required is because the out of the box images such as Ubuntu only has the basic packages installed. What if you wanted your machine to run as webserver on boot or a Nomad Client (Nomad will be introduced in a future post)? In order to run packages with custom configuration at boot a Custom compute image is required and not all systems will be running the same OS some will require other OS systems such as CentOS or Windows.</description>
+    </item>
+    
+  </channel>
+</rss>

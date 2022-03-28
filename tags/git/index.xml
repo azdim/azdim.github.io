@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on Dim</title>
+    <link>https://azdim.github.io/tags/git/</link>
+    <description>Recent content in git on Dim</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 28 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://azdim.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Better code commits</title>
+      <link>https://azdim.github.io/blog/git/</link>
+      <pubDate>Mon, 28 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://azdim.github.io/blog/git/</guid>
+      <description>Introduction As a DevOps/Cloud engineer git is a core tool in our arsenal. A git commit is an action that we execute daily, hourly and sometimes even shorter. I do hope that you the reader are not committing code every second, that would be shocking. Committing code not only creates a snapshot of the work you have done but also describes the work you have done in a commit message.</description>
+    </item>
+    
+  </channel>
+</rss>

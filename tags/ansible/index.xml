@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ansible on Dim</title>
+    <link>https://azdim.github.io/tags/ansible/</link>
+    <description>Recent content in ansible on Dim</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 27 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://azdim.github.io/tags/ansible/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ansible 101</title>
+      <link>https://azdim.github.io/blog/ansible/</link>
+      <pubDate>Sun, 27 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://azdim.github.io/blog/ansible/</guid>
+      <description>What is Ansible? Ansible is an open source configuration management tool offered by RedHat.
+WHy use Ansible?   If you are working with any kind of remote compute at scale whether the platform is hosted within the Cloud or not Ansible is a core tool that you will need to familiarise yourself with. The open source tool only works with Linux based systems which makes up most of any remote platform.</description>
+    </item>
+    
+  </channel>
+</rss>

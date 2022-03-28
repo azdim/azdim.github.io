@@ -6,7 +6,16 @@
     <description>Recent content in Blogs on Dim</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 27 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://azdim.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://azdim.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Better code commits</title>
+      <link>https://azdim.github.io/blog/git/</link>
+      <pubDate>Mon, 28 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://azdim.github.io/blog/git/</guid>
+      <description>Introduction As a DevOps/Cloud engineer git is a core tool in our arsenal. A git commit is an action that we execute daily, hourly and sometimes even shorter. I do hope that you the reader are not committing code every second, that would be shocking. Committing code not only creates a snapshot of the work you have done but also describes the work you have done in a commit message.</description>
+    </item>
+    
     <item>
       <title>About Me</title>
       <link>https://azdim.github.io/blog/about/</link>
@@ -16,6 +25,35 @@
       <description>Me My name is Dimuthu but everyone calls me Dim.
 Education I have completed a Masters in Physics at University College London where I attempted to build a gravitational wave detector in my final year.
 Work I am curently a consultant cloud engineer with Kubrick group and I am currently placed at Astrazeneca supporting their production of a novel HPC platform.</description>
+    </item>
+    
+    <item>
+      <title>Ansible 101</title>
+      <link>https://azdim.github.io/blog/ansible/</link>
+      <pubDate>Sun, 27 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://azdim.github.io/blog/ansible/</guid>
+      <description>What is Ansible? Ansible is an open source configuration management tool offered by RedHat.
+WHy use Ansible?   If you are working with any kind of remote compute at scale whether the platform is hosted within the Cloud or not Ansible is a core tool that you will need to familiarise yourself with. The open source tool only works with Linux based systems which makes up most of any remote platform.</description>
+    </item>
+    
+    <item>
+      <title>Nomad 101</title>
+      <link>https://azdim.github.io/blog/nomad/</link>
+      <pubDate>Sun, 27 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://azdim.github.io/blog/nomad/</guid>
+      <description>What is Nomad? Nomad is an application/workload scheduler and if often compared to Kubernetes. Kubernetes and Nomad share similarities but are also different they can be used in conjuction to one another as well as individually. Depending on the requirement the tool will change. If you have Docker workloads that need to scale out with zero downtime then Nomad is the perfect tool. As of writing this article Nomad is at version 1.</description>
+    </item>
+    
+    <item>
+      <title>Packer 101</title>
+      <link>https://azdim.github.io/blog/packer/</link>
+      <pubDate>Sun, 27 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://azdim.github.io/blog/packer/</guid>
+      <description>What is packer? Packer is a compute image build tool which would allow a user to build custom compute images.
+Why use packer? The reason this is required is because the out of the box images such as Ubuntu only has the basic packages installed. What if you wanted your machine to run as webserver on boot or a Nomad Client (Nomad will be introduced in a future post)? In order to run packages with custom configuration at boot a Custom compute image is required and not all systems will be running the same OS some will require other OS systems such as CentOS or Windows.</description>
     </item>
     
     <item>
