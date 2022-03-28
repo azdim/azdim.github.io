@@ -20,3 +20,7 @@ exclude_rule 'MD029'
 exclude_rule 'MD031'
 
 exclude_rule 'MD034'
+
+exclude_rule 'MD024'
+
+exclude_rule 'MD001'

@@ -433,8 +433,8 @@
 #contentBody table th,
 #contentBody table td {
   padding: 6px 13px;
-  border: 1px solid #000000;
-  background: transparent;
+  border: 1px solid #ffffff;
+  background-color: #f6f6f6;
 }
 
 #contentBody img {
@@ -469,7 +469,7 @@
   font-size: 100%;
   word-break: normal;
   white-space: pre;
-  background-color: #060606;
+  background: transparent;
   border: 0;
 }
 
@@ -488,7 +488,7 @@
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
-  background-color: #000000;
+  background-color: #f6f6f6;
 }
 
 #contentBody pre code {
