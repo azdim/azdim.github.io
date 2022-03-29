@@ -202,6 +202,8 @@ Commitizen is a Python package for writing descriptive and standardized commits 
 
 * You just need to install this tool and create great commits
 
+* Commitizen can be configured further as per your custom requirements that can be set within your team. Documentation available [here.](https://commitizen-tools.github.io/commitizen/config/)
+
 #### Step 1
 
 ```bash
