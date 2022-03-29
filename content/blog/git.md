@@ -157,7 +157,7 @@ The code snipette below will tell the markdownlint test to accept a configuratio
 
 1.
 
-* The `.mdlrc` file with the following content.
+* The `.mdlrc` file with the following content. More documentation on this file is available [here](https://github.com/markdownlint/markdownlint/blob/master/docs/configuration.md#creating-your-own-mdlrc-files).
 
 * This file simply points to another file with the style definitions.
 
@@ -167,7 +167,9 @@ style '.ci/markdown.rb'
 
 2. The `markdown.rb` file with the actual rule exceptions defined. This is the file that you can populate with the exceptions you require for the code base.
 
-The syntax is the foll0wing
+* The syntax is the following
+
+* List of rules can be found [here](https://github.com/markdownlint/markdownlint/blob/master/docs/RULES.md)
 
 ```ruby
 all
@@ -225,6 +227,8 @@ brew install commitizen
 ```bash
 cz commit
 ```
+
+![Alt text for my gif](/img/git_content.gif)
 
 ## Final remarks
 
