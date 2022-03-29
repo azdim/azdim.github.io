@@ -122,8 +122,72 @@ Trim Trailing Whitespace.................................................Passed
       - id: tflint
 ```
 
-* Great now we have good looking code. Let's commit!
+#### Step 6
 
+* This is an optional step, where we will look at what markdown rules we would like **not** to enforce. The reason behind ignoring a test is when you require a certain line to be beyond a given length in case of yamllint or if you want your markdown to look a certain way.
+
+The code snipette below will tell the markdownlint test to accept a configuration that has been set within the `.ci/.mdlrc` path.
+
+```YAML
+-   repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: master
+    hooks:
+    -   id: markdownlint
+        args: ['-c','.ci/.mdlrc']
+```
+
+#### What does the config file look like?
+
+* Let's have a look at the folder structure required prior to defining the test exceptions.
+
+```bash
+|- .ci                      #<--- This is a new directory
+|   |- .mdlrc               #<--- This is a new file
+|   |- markdown.rb          #<--- This is a new file
+|- main.tf                  # These
+|- providers.tf             # files
+|- repositories.yml         # already exist.
+|- README.md                # This example structure builds
+|- .pre-commit-config.yaml  # on the terraform 101
+|- .gitignore               # blog post
+
+```
+
+* It is not a must for the directory to be called `.ci`. Since `args: ['-c','.ci/.mdlrc']` specifies a path the directory can be called anything but recommend `.ci`. The directory has two files.
+
+1.
+
+* The `.mdlrc` file with the following content. More documentation on this file is available [here](https://github.com/markdownlint/markdownlint/blob/master/docs/configuration.md#creating-your-own-mdlrc-files).
+
+* This file simply points to another file with the style definitions.
+
+```markdown
+style '.ci/markdown.rb'
+```
+
+2. The `markdown.rb` file with the actual rule exceptions defined. This is the file that you can populate with the exceptions you require for the code base.
+
+* The syntax is the following
+
+* List of rules can be found [here](https://github.com/markdownlint/markdownlint/blob/master/docs/RULES.md)
+
+```ruby
+all
+exclude_rule '<MDrule number>'
+
+```
+
+For example the configuration below enforces `all` Markdown rules excluding `MD002`.
+
+```ruby
+all
+exclude_rule 'MD002'
+
+```
+
+* Please note that this is the rule exception strategy for markdownlint. Other pre-commit hooks will have a different syntax, which should be documented within the hook's repository.
+
+* Great now we have good looking code. Let's commit!
 
 ## What is commitizen?
 
@@ -139,6 +203,8 @@ Commitizen is a Python package for writing descriptive and standardized commits 
 ## Where do I start with commitizen?
 
 * You just need to install this tool and create great commits
+
+* Commitizen can be configured further as per your custom requirements that can be set within your team. Documentation available [here.](https://commitizen-tools.github.io/commitizen/config/)
 
 #### Step 1
 
@@ -161,6 +227,8 @@ brew install commitizen
 ```bash
 cz commit
 ```
+
+![Alt text for my gif](/img/git_content.gif)
 
 ## Final remarks
 
