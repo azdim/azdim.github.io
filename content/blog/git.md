@@ -175,7 +175,7 @@ exclude_rule '<MDrule number>'
 
 ```
 
-For example the configuration below enforaces `all` Markdown rules excluding `MD002`.
+For example the configuration below enforces `all` Markdown rules excluding `MD002`.
 
 ```ruby
 all
