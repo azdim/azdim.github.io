@@ -37,7 +37,7 @@
 <meta itemprop="name" content="Better code commits">
 <meta itemprop="description" content="It is important to have tested code as well as clear commit messages."><meta itemprop="datePublished" content="2022-03-28T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-03-28T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1111"><meta itemprop="image" content="https://azdim.github.io/avatar2.jpg">
+<meta itemprop="wordCount" content="1169"><meta itemprop="image" content="https://azdim.github.io/avatar2.jpg">
 <meta itemprop="keywords" content="git," /><meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://azdim.github.io/avatar2.jpg"/>
 
@@ -91,30 +91,30 @@
   
   <div id="contentBody">
     <h2 id="introduction">Introduction</h2>
-<p>As a DevOps/Cloud engineer git is a core tool in our arsenal. A git commit is an action that we execute daily, hourly and sometimes even shorter. I do hope that you the reader are not committing code every second, that would be shocking. Committing code not only creates a snapshot of the work you have done but also describes the work you have done in a commit message.</p>
+<p>As a DevOps/Cloud engineer, git is an essential tool in our arsenal. A git commit is an action that we execute daily, hourly and sometimes more often than that. I hope that you, the reader, are not committing code every second - that would be shocking. Committing code not only creates a snapshot of the work you have done but it also describes the work you have done in a commit message.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git add .
 
 git commit -m <span style="color:#e6db74">&#34;It works&#34;</span>
-</code></pre></div><p>By the end of this post I sincerely hope that the two commands above are not the only ones you will run prior to pushing code. And in the case of the second command, well it is trash.</p>
+</code></pre></div><p>By the end of this post I hope that the two commands above are not the only ones you will run prior to pushing code. Regarding the second command&hellip; well it is unacceptable and stick around to find out why 👀 .</p>
 <h2 id="why-the-fuss">Why the fuss?</h2>
-<p>Git provides a <a href="https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows">decentralised workflow</a>, where you as an engineer contribute to a repository that others also contribute to. It is therefore important that a commit provides a clear insight to changes that have been made for quicker debugging (time is money). It is also important that we test our code for linting issues. Your code doesn&rsquo;t need to work but it needs to look good. Errors are meant to happen.</p>
-<p>These days CI/CD pipelines are triggered on git pushes and so it is important to do everything you can to prevent a failure in the pipeline.</p>
+<p>Git provides a <a href="https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows">decentralised workflow</a>, where you as an engineer contribute to a repository that others can also contribute to. It is therefore important that a commit provides a clear insight to changes that have been made for quicker debugging (time is money). It is also important that we test our code for linting issues. Your code doesn&rsquo;t need to work but it needs to look good. The code does not need to be complete for it to be commited.</p>
+<p>Most CI/CD pipelines are triggered on git pushes so it is important to do everything you can to prevent a failure in the pipeline.</p>
 <h2 id="so-how-do-i-make-my-code-better">So how do I make my code better?</h2>
-<p>Here I will introduce two tools</p>
+<p>Here I will introduce two tools:</p>
 <ol>
-<li><a href="https://pre-commit.com">pre-commit</a>: This tool will be used for code testing</li>
-<li><a href="https://commitizen-tools.github.io/commitizen/">commitizen</a>: Create better commits</li>
+<li><a href="https://pre-commit.com">pre-commit</a>- This tool will be used for code testing</li>
+<li><a href="https://commitizen-tools.github.io/commitizen/">commitizen</a>- To create better commits</li>
 </ol>
 <h2 id="what-is-pre-commit">What is pre-commit?</h2>
 <p>Pre-commit is a python package which acts as a framework for managing pre-commit hooks. Pre-commit allows you to run several staged code checks prior to committing your changes.</p>
 <h2 id="why-use-pre-commit">Why use pre-commit?</h2>
-<p>To save time and money! Once a code gets pushed into git and your pipeline kicks off, it can take a few seconds or minutes to find where an error came from. So using pre-commit we can prevent simple errors such as terraform validation or even simpler YAML lint!</p>
+<p>To save time and money! Once a code gets pushed into git and your pipeline kicks off, it can take a few seconds or minutes to find where an error has come from. So by using pre-commit, we can prevent simple errors such as terraform validation or even simpler YAML lint!</p>
 <h2 id="where-do-i-start-with-pre-commit">Where do I start with pre-commit?</h2>
-<p>We are going to add a pre-commit config to the terraform code we have built in the previous post. If you haven&rsquo;t gone through it or don&rsquo;t want to, that is absolutely fine. Add a pre-commit config to any code you are working on and make it a habit. Adding a pre-commit config to a template repository is a perfect way to introduce this tool to a wider team.</p>
+<p>We are going to add a pre-commit config to the terraform code we have built in the previous post. If you haven&rsquo;t gone through it or don&rsquo;t want to, that is absolutely fine. Add a pre-commit config to any code you are working on and try to make it a habit. Adding a pre-commit config to a template repository is a perfect way to introduce this tool to your wider team.</p>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
 <li><input disabled="" type="checkbox"> I have python installed. <a href="https://www.python.org/downloads/">Installing Python</a></li>
-<li><input disabled="" type="checkbox"> I have an IDE installed. An IDE such as VSCode of PyCharm is recommended.</li>
+<li><input disabled="" type="checkbox"> I have an IDE installed. An IDE such as VSCode or PyCharm is recommended.</li>
 <li><input disabled="" type="checkbox"> I have configured Git <a href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup">Instructions can be found here</a></li>
 <li><input disabled="" type="checkbox"> I have some code ready.</li>
 <li><input disabled="" type="checkbox"> I have pip installed. <a href="https://pip.pypa.io/en/stable/installation/">Installing pip</a></li>
@@ -148,7 +148,7 @@ pre-commit 2.17.0
 <p>Populate the config file with the following</p>
 </li>
 <li>
-<p>List of hooks available <a href="https://pre-commit.com/hooks.html">here.</a></p>
+<p>List of hooks are available <a href="https://pre-commit.com/hooks.html">here</a></p>
 </li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-YAML" data-lang="YAML">---
@@ -179,9 +179,9 @@ Trim Trailing Whitespace.................................................Passed
       - <span style="color:#f92672">id</span>: <span style="color:#ae81ff">tflint</span>
 </code></pre></div><h4 id="step-6">Step 6</h4>
 <ul>
-<li>This is an optional step, where we will look at what markdown rules we would like <strong>not</strong> to enforce. The reason behind ignoring a test is when you require a certain line to be beyond a given length in case of yamllint or if you want your markdown to look a certain way.</li>
+<li>This is an optional step, where we will look at what markdown rules we would like <strong>not</strong> to enforce. The reason behind not enforcing certain rules is due to a code requirement you may have. A classic example is the yamllint line too long error. Some Ansible configurations require a single string to be longer than the rule allows for.</li>
 </ul>
-<p>The code snipette below will tell the markdownlint test to accept a configuration that has been set within the <code>.ci/.mdlrc</code> path.</p>
+<p>The code snippet below will tell the markdownlint test to accept a configuration that has been set within the <code>.ci/.mdlrc</code> path.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-YAML" data-lang="YAML">-   <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">https://github.com/jumanjihouse/pre-commit-hooks</span>
     <span style="color:#f92672">rev</span>: <span style="color:#ae81ff">master</span>
     <span style="color:#f92672">hooks</span>:
@@ -202,30 +202,20 @@ Trim Trailing Whitespace.................................................Passed
 |- .gitignore               <span style="color:#75715e"># blog post</span>
 
 </code></pre></div><ul>
-<li>It is not a must for the directory to be called <code>.ci</code>. Since <code>args: ['-c','.ci/.mdlrc']</code> specifies a path the directory can be called anything but recommend <code>.ci</code>. The directory has two files.</li>
+<li>It is not mandatory for the directory to be called <code>.ci</code>. Since <code>args: ['-c','.ci/.mdlrc']</code> specifies a path, the directory can be called anything but I recommend <code>.ci</code>. The directory has two files:</li>
 </ul>
 <ol>
-<li></li>
+<li>The <code>.mdlrc</code> file with the following content. More documentation on this file is available <a href="https://github.com/markdownlint/markdownlint/blob/master/docs/configuration.md#creating-your-own-mdlrc-files">here</a>.</li>
 </ol>
 <ul>
-<li>
-<p>The <code>.mdlrc</code> file with the following content. More documentation on this file is available <a href="https://github.com/markdownlint/markdownlint/blob/master/docs/configuration.md#creating-your-own-mdlrc-files">here</a>.</p>
-</li>
-<li>
-<p>This file simply points to another file with the style definitions.</p>
-</li>
+<li>This file simply points to another file with the style definitions.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">style &#39;.ci/markdown.rb&#39;
 </code></pre></div><ol start="2">
 <li>The <code>markdown.rb</code> file with the actual rule exceptions defined. This is the file that you can populate with the exceptions you require for the code base.</li>
 </ol>
 <ul>
-<li>
-<p>The syntax is the following</p>
-</li>
-<li>
-<p>List of rules can be found <a href="https://github.com/markdownlint/markdownlint/blob/master/docs/RULES.md">here</a></p>
-</li>
+<li>The syntax is the following</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">all
 exclude_rule <span style="color:#e6db74">&#39;&lt;MDrule number&gt;&#39;</span>
@@ -236,25 +226,31 @@ exclude_rule <span style="color:#e6db74">&#39;MD002&#39;</span>
 
 </code></pre></div><ul>
 <li>
+<p>List of rules can be found <a href="https://github.com/markdownlint/markdownlint/blob/master/docs/RULES.md">here.</a></p>
+</li>
+<li>
 <p>Please note that this is the rule exception strategy for markdownlint. Other pre-commit hooks will have a different syntax, which should be documented within the hook&rsquo;s repository.</p>
 </li>
 <li>
-<p>Great now we have good looking code. Let&rsquo;s commit!</p>
+<p>Great, now we have good looking code. Let&rsquo;s commit!</p>
 </li>
 </ul>
 <h2 id="what-is-commitizen">What is commitizen?</h2>
-<p>Commitizen is a Python package for writing descriptive and standardized commits across teams. It also allows for changelog creation once you release a new version of the code base you are working on.</p>
+<p>Commitizen is a Python package for writing descriptive and standardised commits across teams. It also allows for changelog creation once you release a new version of the code base you are working on.</p>
 <h2 id="why-use-commitizen">Why use commitizen?</h2>
 <ol>
-<li>Create a commit standard across your team.</li>
-<li>Capture work items (Jira tickets or Azure board tickets) within your commit.</li>
-<li>Create commit prefixes that you can trigger pipelines base on.</li>
-<li>Many more!</li>
+<li>To create a commit standard across your team.</li>
+<li>To capture work items (Jira tickets or Azure board tickets) within your commit.</li>
+<li>To create commit prefixes that you can trigger pipelines base on.</li>
+<li>And many more!</li>
 </ol>
 <h2 id="where-do-i-start-with-commitizen">Where do I start with commitizen?</h2>
 <ul>
 <li>
-<p>You just need to install this tool and create great commits</p>
+<p>You just need to install this tool and create great commits.</p>
+</li>
+<li>
+<p>Commitizen can be configured further as per your custom requirements that can be set with your team. Documentation is available <a href="https://commitizen-tools.github.io/commitizen/config/">here.</a></p>
 </li>
 <li>
 <p>Commitizen can be configured further as per your custom requirements that can be set within your team. Documentation available <a href="https://commitizen-tools.github.io/commitizen/config/">here.</a></p>
@@ -278,7 +274,7 @@ brew install commitizen
 </code></pre></div><p><img src="https://azdim.github.io/img/git_content.gif" alt="Alt text for my gif"></p>
 <h2 id="final-remarks">Final remarks</h2>
 <ul>
-<li>Bring it all together</li>
+<li>Finally, let&rsquo;s bring it all together!</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git status
 git diff <span style="color:#75715e">## only if you know how to get out of vim</span>
@@ -288,7 +284,7 @@ git add . <span style="color:#75715e">## pick up changes made by pre-commit</spa
 cz commit
 git push
 </code></pre></div><ul>
-<li>Well done! I hope you have enjoyed this short post on better git commits.</li>
+<li>Well done! I hope you have enjoyed my post on better git commits and have learned something new.</li>
 </ul>
 
   </div>

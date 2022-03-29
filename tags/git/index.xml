@@ -13,7 +13,7 @@
       <pubDate>Mon, 28 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://azdim.github.io/blog/git/</guid>
-      <description>Introduction As a DevOps/Cloud engineer git is a core tool in our arsenal. A git commit is an action that we execute daily, hourly and sometimes even shorter. I do hope that you the reader are not committing code every second, that would be shocking. Committing code not only creates a snapshot of the work you have done but also describes the work you have done in a commit message.</description>
+      <description>Introduction As a DevOps/Cloud engineer, git is an essential tool in our arsenal. A git commit is an action that we execute daily, hourly and sometimes more often than that. I hope that you, the reader, are not committing code every second - that would be shocking. Committing code not only creates a snapshot of the work you have done but it also describes the work you have done in a commit message.</description>
     </item>
     
   </channel>
