@@ -161,3 +161,19 @@ brew install commitizen
 ```bash
 cz commit
 ```
+
+## Final remarks
+
+* Bring it all together
+
+```bash
+git status
+git diff ## only if you know how to get out of vim
+git add .
+pre-commit run --all-files
+git add . ## pick up changes made by pre-commit
+cz commit
+git push
+```
+
+* Well done! I hope you have enjoyed this short post on better git commits.
