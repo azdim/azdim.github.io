@@ -37,7 +37,7 @@
 <meta itemprop="name" content="Better code commits">
 <meta itemprop="description" content="It is important to have tested code as well as clear commit messages."><meta itemprop="datePublished" content="2022-03-28T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-03-28T00:00:00+00:00" />
-<meta itemprop="wordCount" content="726"><meta itemprop="image" content="https://azdim.github.io/avatar2.jpg">
+<meta itemprop="wordCount" content="781"><meta itemprop="image" content="https://azdim.github.io/avatar2.jpg">
 <meta itemprop="keywords" content="git," /><meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://azdim.github.io/avatar2.jpg"/>
 
@@ -208,7 +208,21 @@ brew install commitizen
 <li>Commit!</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cz commit
-</code></pre></div>
+</code></pre></div><h2 id="final-remarks">Final remarks</h2>
+<ul>
+<li>Bring it all together</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git status
+git diff <span style="color:#75715e">## only if you know how to get out of vim</span>
+git add .
+pre-commit run --all-files
+git add . <span style="color:#75715e">## pick up changes made by pre-commit</span>
+cz commit
+git push
+</code></pre></div><ul>
+<li>Well done! I hope you have enjoyed this short post on better git commits.</li>
+</ul>
+
   </div>
   <footer>
   <p>
