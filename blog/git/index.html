@@ -37,7 +37,7 @@
 <meta itemprop="name" content="Better code commits">
 <meta itemprop="description" content="It is important to have tested code as well as clear commit messages."><meta itemprop="datePublished" content="2022-03-28T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-03-28T00:00:00+00:00" />
-<meta itemprop="wordCount" content="781"><meta itemprop="image" content="https://azdim.github.io/avatar2.jpg">
+<meta itemprop="wordCount" content="1111"><meta itemprop="image" content="https://azdim.github.io/avatar2.jpg">
 <meta itemprop="keywords" content="git," /><meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://azdim.github.io/avatar2.jpg"/>
 
@@ -177,8 +177,70 @@ Trim Trailing Whitespace.................................................Passed
       - <span style="color:#f92672">id</span>: <span style="color:#ae81ff">terraform-fmt</span>
       - <span style="color:#f92672">id</span>: <span style="color:#ae81ff">terraform-validate</span>
       - <span style="color:#f92672">id</span>: <span style="color:#ae81ff">tflint</span>
+</code></pre></div><h4 id="step-6">Step 6</h4>
+<ul>
+<li>This is an optional step, where we will look at what markdown rules we would like <strong>not</strong> to enforce. The reason behind ignoring a test is when you require a certain line to be beyond a given length in case of yamllint or if you want your markdown to look a certain way.</li>
+</ul>
+<p>The code snipette below will tell the markdownlint test to accept a configuration that has been set within the <code>.ci/.mdlrc</code> path.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-YAML" data-lang="YAML">-   <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">https://github.com/jumanjihouse/pre-commit-hooks</span>
+    <span style="color:#f92672">rev</span>: <span style="color:#ae81ff">master</span>
+    <span style="color:#f92672">hooks</span>:
+    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">markdownlint</span>
+        <span style="color:#f92672">args</span>: [<span style="color:#e6db74">&#39;-c&#39;</span>,<span style="color:#e6db74">&#39;.ci/.mdlrc&#39;</span>]
+</code></pre></div><h4 id="what-does-the-config-file-look-like">What does the config file look like?</h4>
+<ul>
+<li>Let&rsquo;s have a look at the folder structure required prior to defining the test exceptions.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">|- .ci                      <span style="color:#75715e">#&lt;--- This is a new directory</span>
+|   |- .mdlrc               <span style="color:#75715e">#&lt;--- This is a new file</span>
+|   |- markdown.rb          <span style="color:#75715e">#&lt;--- This is a new file</span>
+|- main.tf                  <span style="color:#75715e"># These</span>
+|- providers.tf             <span style="color:#75715e"># files</span>
+|- repositories.yml         <span style="color:#75715e"># already exist.</span>
+|- README.md                <span style="color:#75715e"># This example structure builds</span>
+|- .pre-commit-config.yaml  <span style="color:#75715e"># on the terraform 101</span>
+|- .gitignore               <span style="color:#75715e"># blog post</span>
+
 </code></pre></div><ul>
-<li>Great now we have good looking code. Let&rsquo;s commit!</li>
+<li>It is not a must for the directory to be called <code>.ci</code>. Since <code>args: ['-c','.ci/.mdlrc']</code> specifies a path the directory can be called anything but recommend <code>.ci</code>. The directory has two files.</li>
+</ul>
+<ol>
+<li></li>
+</ol>
+<ul>
+<li>
+<p>The <code>.mdlrc</code> file with the following content. More documentation on this file is available <a href="https://github.com/markdownlint/markdownlint/blob/master/docs/configuration.md#creating-your-own-mdlrc-files">here</a>.</p>
+</li>
+<li>
+<p>This file simply points to another file with the style definitions.</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">style &#39;.ci/markdown.rb&#39;
+</code></pre></div><ol start="2">
+<li>The <code>markdown.rb</code> file with the actual rule exceptions defined. This is the file that you can populate with the exceptions you require for the code base.</li>
+</ol>
+<ul>
+<li>
+<p>The syntax is the following</p>
+</li>
+<li>
+<p>List of rules can be found <a href="https://github.com/markdownlint/markdownlint/blob/master/docs/RULES.md">here</a></p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">all
+exclude_rule <span style="color:#e6db74">&#39;&lt;MDrule number&gt;&#39;</span>
+
+</code></pre></div><p>For example the configuration below enforces <code>all</code> Markdown rules excluding <code>MD002</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">all
+exclude_rule <span style="color:#e6db74">&#39;MD002&#39;</span>
+
+</code></pre></div><ul>
+<li>
+<p>Please note that this is the rule exception strategy for markdownlint. Other pre-commit hooks will have a different syntax, which should be documented within the hook&rsquo;s repository.</p>
+</li>
+<li>
+<p>Great now we have good looking code. Let&rsquo;s commit!</p>
+</li>
 </ul>
 <h2 id="what-is-commitizen">What is commitizen?</h2>
 <p>Commitizen is a Python package for writing descriptive and standardized commits across teams. It also allows for changelog creation once you release a new version of the code base you are working on.</p>
@@ -191,7 +253,12 @@ Trim Trailing Whitespace.................................................Passed
 </ol>
 <h2 id="where-do-i-start-with-commitizen">Where do I start with commitizen?</h2>
 <ul>
-<li>You just need to install this tool and create great commits</li>
+<li>
+<p>You just need to install this tool and create great commits</p>
+</li>
+<li>
+<p>Commitizen can be configured further as per your custom requirements that can be set within your team. Documentation available <a href="https://commitizen-tools.github.io/commitizen/config/">here.</a></p>
+</li>
 </ul>
 <h4 id="step-1-1">Step 1</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
@@ -208,7 +275,8 @@ brew install commitizen
 <li>Commit!</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cz commit
-</code></pre></div><h2 id="final-remarks">Final remarks</h2>
+</code></pre></div><p><img src="https://azdim.github.io/img/git_content.gif" alt="Alt text for my gif"></p>
+<h2 id="final-remarks">Final remarks</h2>
 <ul>
 <li>Bring it all together</li>
 </ul>
